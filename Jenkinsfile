@@ -20,6 +20,19 @@ pipeline{
                 }
             }
         }
+
+      stage('Stop Container'){
+            steps{
+                script{
+                    if (sh 'docker ps -qa -f name=pycontainer'){
+                        echo 'container exists stopping it ....'
+                        sh 'docker stop container pycontainer'
+                        echo 'klling container'
+                        sh 'docker rm pycontainer'
+                    }
+                }
+            }
+        }
     }
 
 }

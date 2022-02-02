@@ -1,7 +1,7 @@
 pipeline{
     agent any
 
-    env{
+    environment{
         container_exits = 'pycontainer'
     }
 

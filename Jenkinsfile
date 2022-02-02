@@ -35,6 +35,14 @@ pipeline{
                 }
             }
         }
+
+        stage('Start Container'){
+            steps{
+                script{
+                    sh 'docker run -it -d --name pycontainer -p 5000:5000 git/flaskapp'
+                }
+            }
+        }
     }
 
 }

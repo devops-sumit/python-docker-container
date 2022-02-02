@@ -48,6 +48,16 @@ pipeline{
                 }
             }
         }
+        stage('Push to Hub'){
+            steps{
+                script{
+                    echo 'Pushing to Hub'
+                    sh 'docker tag git/flaskapp:latest dockerlearndevops/flaskapp'
+                    sh 'docker push dockerlearndevops/flaskapp'
+                    echo 'image pushed'
+                }
+            }
+        }
     }
 
 }

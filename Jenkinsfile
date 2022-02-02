@@ -26,7 +26,12 @@ pipeline{
             steps{
                 script{
                     def containerExists = sh(script: 'docker ps -qa -f name=test', returnStdout: true)
-                    echo containerExists
+                    if (container_exits){
+                        echo 'container exists stopping it ....'
+                        sh 'docker stop container pycontainer'
+                        echo 'klling container'
+                        sh 'docker rm pycontainer'
+                    }
                     }
             }
         }

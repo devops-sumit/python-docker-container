@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     environment{
-        container_exits = 'pycontainer this is your container'
+        container_exits = 'pycontainer'
     }
     stages{
         stage('Git Checkout'){
@@ -39,7 +39,12 @@ pipeline{
                 script{
                     sh 'docker run -it -d --name pycontainer -p 5000:5000 git/flaskapp'
                 }
-                echo container_exits
+                if(container_exits == 'pycontainer'){
+                    echo 'yup got it'
+                }
+                else{
+                    echo 'does not match'
+                }
             }
         }
     }

@@ -2,7 +2,7 @@ pipeline{
     agent any
 
     environment{
-        container_exits = 'pycontainer'
+        container_exits = 'pycontainer1'
     }
     stages{
         stage('Git Checkout'){

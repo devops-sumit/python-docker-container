@@ -38,12 +38,13 @@ pipeline{
             steps{
                 script{
                     sh 'docker run -it -d --name pycontainer -p 5000:5000 git/flaskapp'
-                }
+
                 if(container_exits == 'pycontainer'){
                     echo 'yup got it'
                 }
                 else{
                     echo 'does not match'
+                }
                 }
             }
         }

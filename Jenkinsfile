@@ -4,7 +4,6 @@ pipeline{
     environment{
         container_exits = 'pycontainer'
     }
-
     stages{
         stage('Git Checkout'){
             steps{

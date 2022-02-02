@@ -20,12 +20,20 @@ pipeline{
                 }
             }
         }
+      stage('Start Container'){
+            steps{
+                script{
+                    echo "running container "
+                    sh 'docker run -it -d --name pycontainer -p 5000:5000 git/flaskapp'
+                }
+            }
+        }
 
       stage('Stop Container'){
             steps{
                 script{
-                    def imageExists = sh(script: "docker ps -qa -f name=pycontainer", returnStdout: true) == 0
-                    if (imageExists){
+                    def containerExists = sh(script: "docker ps -qa -f name=pycontainer", returnStdout: true) == 0
+                    if (containerExists){
                         echo 'container exists stopping it ....'
                         sh 'docker stop container pycontainer'
                         echo 'klling container'

@@ -25,7 +25,7 @@ pipeline{
       stage('Stop Container'){
             steps{
                 script{
-                    def containerExists = sh(script: 'docker ps -qa -f name=pycontainer', returnStdout: true)
+                    def containerExists = sh(script: 'docker ps -qa -f name=test', returnStdout: true)
                     echo containerExists
                     }
             }

@@ -24,7 +24,8 @@ pipeline{
       stage('Stop Container'){
             steps{
                 script{
-                    if (sh 'docker ps -qa -f name=pycontainer'){
+                    def imageExists = sh(script: "docker ps -qa -f name=pycontainer", returnStdout: true) == 0
+                    if (imageExists){
                         echo 'container exists stopping it ....'
                         sh 'docker stop container pycontainer'
                         echo 'klling container'
